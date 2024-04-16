@@ -1,42 +1,20 @@
-<div class="card mb-3">
+<div class="card mb-3" *ngFor="let movie of movies">
   <div class="row">
     <div class="col-md-3">
-      <img src="assets/image/jurassic-park.jpg" class="img-fluid rounded-start" alt=""/>
+      <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
     </div>
     <div class="col-md-9">
       <div class="card-body">
-        <h2 class="card-title">Movie 1</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.</p>
+        <h2 class="card-title">{{ movie.title }}</h2>
+        <p class="card-text">{{ movie.description }}</p>
         <button class="btn btn-sm btn-outline-primary">Details</button>
       </div>
     </div>
   </div>
 </div>
-<div class="card mb-3">
-  <div class="row">
-    <div class="col-md-3">
-      <img src="assets/image/godzilla.jpg" class="img-fluid rounded-start" alt=""/>
-    </div>
-    <div class="col-md-9">
-      <div class="card-body">
-        <h2 class="card-title">Movie 2</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.</p>
-        <button class="btn btn-sm btn-outline-primary">Details</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="card mb-3">
-  <div class="row">
-    <div class="col-md-3">
-      <img src="assets/image/the-hunger-games.jpg" class="img-fluid rounded-start" alt=""/>
-    </div>
-    <div class="col-md-9">
-      <div class="card-body">
-        <h2 class="card-title">Movie 3</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.</p>
-        <button class="btn btn-sm btn-outline-primary">Details</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<!--<movie *ngFor="let movie of movies"></movie>-->
+
+<!--<ul>
+  <li *ngFor="let movie of movies">{{ movie }}</li>
+</ul>-->

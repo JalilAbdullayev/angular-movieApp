@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './category.component.css'
 })
 export class CategoryComponent {
-
+categories = ['Adventure', 'Romance', 'Sci-Fi', 'Drama'];
 }
