@@ -1,20 +1,43 @@
-<div class="card mb-3" *ngFor="let movie of movies">
-  <div class="row">
-    <div class="col-md-3">
-      <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
-    </div>
-    <div class="col-md-9">
-      <div class="card-body">
-        <h2 class="card-title">{{ movie.title }}</h2>
-        <p class="card-text">{{ movie.description }}</p>
-        <button class="btn btn-sm btn-outline-primary">Details</button>
+<div *ngIf="movies.length > 0; else noMovies">
+  <h1>{{ title }}</h1>
+  <div class="alert alert-success">{{ movies.length }} movie(s) found.</div>
+  <ng-template [ngTemplateOutlet]="movieList"></ng-template>
+  <ng-template [ngTemplateOutlet]="movieList2"
+               [ngTemplateOutletContext]="{movies: movieRepository.getMovies()}"></ng-template>
+</div>
+<ng-template #noMovies>
+  <div class="alert alert-warning">Movies not found.</div>
+</ng-template>
+<ng-template #movieList>
+  <div class="card mb-3" *ngFor="let movie of movies">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h2 class="card-title">{{ movie.title }}</h2>
+          <p class="card-text">{{ movie.description }}</p>
+          <button class="btn btn-sm btn-outline-primary">Details</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!--<movie *ngFor="let movie of movies"></movie>-->
-
-<!--<ul>
-  <li *ngFor="let movie of movies">{{ movie }}</li>
-</ul>-->
+</ng-template>
+<ng-template #movieList2 let-popular="movies">
+  <h2>Popular Movies</h2>
+  <div class="card mb-3" *ngFor="let movie of popular">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h2 class="card-title">{{ movie.title }}</h2>
+          <p class="card-text">{{ movie.description }}</p>
+          <button class="btn btn-sm btn-outline-primary">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

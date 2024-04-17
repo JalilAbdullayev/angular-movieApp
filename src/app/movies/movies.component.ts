@@ -8,7 +8,7 @@ import {MovieRepository} from "../models/movie.repository";
   styleUrl: './movies.component.css'
 })
 export class MoviesComponent {
-  /*movies = ['Movie 1', 'Movie 2', 'Movie 3', 'Movie 4'];*/
+  title = 'Movies List';
   movies: Movie[];
   movieRepository: MovieRepository;
 
