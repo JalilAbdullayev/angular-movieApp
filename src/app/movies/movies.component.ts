@@ -10,7 +10,7 @@ import {MovieRepository} from "../models/movie.repository";
 export class MoviesComponent {
   title = 'Movies List';
   movies: Movie[];
-  popularMovies: Movie[];
+  filteredMovies: Movie[];
   movieRepository: MovieRepository;
 
   filterText: string = '';
@@ -18,6 +18,12 @@ export class MoviesComponent {
   constructor() {
     this.movieRepository = new MovieRepository();
     this.movies = this.movieRepository.getMovies();
-    this.popularMovies = this.movieRepository.getPopularMovies();
+    this.filteredMovies = this.movies;
+  }
+
+  onInputChange() {
+    this.filteredMovies = this.filterText ?
+      this.movies.filter(m => m.title.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
+        m.description.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1) : this.movies;
   }
 }

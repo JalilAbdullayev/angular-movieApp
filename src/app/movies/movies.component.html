@@ -1,8 +1,9 @@
 <div *ngIf="movies.length > 0; else noMovies">
   <h1>{{ title }}</h1>
-  <div class="alert alert-success">{{ movies.length }} movie(s) found.</div>
+  <div class="alert alert-success">{{ filteredMovies.length }} movie(s) found.</div>
   <div class="mb-3">
-    <input type="search" [(ngModel)]="filterText" class="form-control" placeholder="Search..."/>
+    <input type="search" class="form-control" placeholder="Search..." [(ngModel)]="filterText"
+           (ngModelChange)="onInputChange()"/>
     <small class="text-muted" *ngIf="filterText">
       You searched for: {{ filterText }}
     </small>
@@ -13,7 +14,7 @@
   <div class="alert alert-warning">Movies not found.</div>
 </ng-template>
 <ng-template #movieList>
-  <div class="card mb-3" *ngFor="let movie of movies | movieFilter: filterText">
+  <div class="card mb-3" *ngFor="let movie of filteredMovies">
     <div class="row">
       <div class="col-md-3">
         <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
