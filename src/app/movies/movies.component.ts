@@ -12,7 +12,8 @@ export class MoviesComponent {
   movies: Movie[];
   popularMovies: Movie[];
   movieRepository: MovieRepository;
-  today = new Date();
+
+  filterText: string = '';
 
   constructor() {
     this.movieRepository = new MovieRepository();
