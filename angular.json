@@ -16,6 +16,9 @@
           "standalone": false
         }
       },
+      "i18n": {
+        "sourceLocale": "az"
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",

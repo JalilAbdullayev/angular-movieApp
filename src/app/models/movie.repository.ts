@@ -9,25 +9,29 @@ export class MovieRepository {
       title: 'Movie 1',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.',
       imageUrl: 'jurassic-park.jpg',
-      isPopular: true
+      isPopular: true,
+      datePublished: new Date(1993, 6, 11)
     }, {
       id: 2,
       title: 'Movie 2',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.',
       imageUrl: 'godzilla.jpg',
-      isPopular: false
+      isPopular: false,
+      datePublished: new Date(2014, 5, 16)
     }, {
       id: 3,
       title: 'Movie 3',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.',
       imageUrl: 'the-hunger-games.jpg',
-      isPopular: false
+      isPopular: false,
+      datePublished: new Date(2012, 3, 23)
     }, {
       id: 4,
       title: 'Movie 4',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.',
       imageUrl: 'rogue-one.jpg',
-      isPopular: true
+      isPopular: true,
+      datePublished: new Date(2016, 12, 13)
     }];
   }
 

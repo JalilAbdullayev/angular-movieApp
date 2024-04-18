@@ -1,8 +1,6 @@
 <div *ngIf="movies.length > 0; else noMovies">
   <h1>{{ title }}</h1>
   <div class="alert alert-success">{{ movies.length }} movie(s) found.</div>
-  <ng-template [ngTemplateOutlet]="movieList2"
-               [ngTemplateOutletContext]="{movies: movieRepository.getPopularMovies()}"></ng-template>
   <ng-template [ngTemplateOutlet]="movieList"></ng-template>
 </div>
 <ng-template #noMovies>
@@ -16,28 +14,48 @@
       </div>
       <div class="col-md-9">
         <div class="card-body">
-          <h2 class="card-title">{{ movie.title }}</h2>
+          <h2 class="card-title">{{ movie.title | titlecase }}</h2>
           <p class="card-text">{{ movie.description }}</p>
+          <p class="card-text">{{ movie.datePublished | date: 'dd/MM/y' }}</p>
           <button class="btn btn-sm btn-outline-primary">Details</button>
         </div>
       </div>
     </div>
   </div>
 </ng-template>
-<ng-template #movieList2 let-movies="movies">
-  <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
-    <div class="col" *ngFor="let movie of movies">
-      <div class="card h-100">
-        <img src="assets/image/{{ movie.imageUrl }}" class="card-img-top" alt=""/>
-        <div class="card-body">
-          <div class="card-title">
-            {{ movie.title }}
-            <p class="card-text">
-              {{ movie.description }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>
+
+<h4>
+  lower-upper-title pipe
+</h4>
+<p>{{ 'Samsung Galaxy S20' | lowercase }}</p>
+<p>{{ 'Samsung Galaxy S20' | uppercase }}</p>
+<p>{{ 'Samsung Galaxy S20' | titlecase }}</p>
+<br/><br/>
+
+<h4>Date pipe
+</h4>
+<p>{{ today }}</p>
+<p>{{ today | date }}</p>
+<p>{{ today | date: 'fullDate' }}</p>
+<p>{{ today | date: 'medium' }}</p>
+<p>{{ today | date: 'shortTime' }}</p>
+<p>{{ today | date: 'h:mm:ss' }}</p>
+<br/><br/>
+
+<h4>Decimal Pipe</h4>
+<p>{{ 5.6789 | number }}</p>
+<p>{{ 5.6789 | number: '2.0-3' }}</p>
+<p>{{ 5.6789 | number: '4.1-7' }}</p>
+<br/><br/>
+
+<h4>Currency Pipe</h4>
+<p>{{ 395 | currency }}</p>
+<p>{{ 395 | currency: 'EUR' }}</p>
+<p>{{ 395 | currency: 'AZN' }}</p>
+<br/><br/>
+
+<h4>Percent Pipe</h4>
+<p>{{ 0.259 | percent }}</p>
+<p>{{ 0.0259 | percent }}</p>
+<p>{{ 1.26 | percent: '2.2-4' }}</p>
+<p>{{ 3/4 | percent: '2.2-4' }}</p>
