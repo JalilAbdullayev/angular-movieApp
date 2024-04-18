@@ -1,9 +1,9 @@
 <div *ngIf="movies.length > 0; else noMovies">
   <h1>{{ title }}</h1>
   <div class="alert alert-success">{{ movies.length }} movie(s) found.</div>
-  <ng-template [ngTemplateOutlet]="movieList"></ng-template>
   <ng-template [ngTemplateOutlet]="movieList2"
-               [ngTemplateOutletContext]="{movies: movieRepository.getMovies()}"></ng-template>
+               [ngTemplateOutletContext]="{movies: movieRepository.getPopularMovies()}"></ng-template>
+  <ng-template [ngTemplateOutlet]="movieList"></ng-template>
 </div>
 <ng-template #noMovies>
   <div class="alert alert-warning">Movies not found.</div>
@@ -24,18 +24,18 @@
     </div>
   </div>
 </ng-template>
-<ng-template #movieList2 let-popular="movies">
-  <h2>Popular Movies</h2>
-  <div class="card mb-3" *ngFor="let movie of popular">
-    <div class="row">
-      <div class="col-md-3">
-        <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
-      </div>
-      <div class="col-md-9">
+<ng-template #movieList2 let-movies="movies">
+  <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+    <div class="col" *ngFor="let movie of movies">
+      <div class="card h-100">
+        <img src="assets/image/{{ movie.imageUrl }}" class="card-img-top" alt=""/>
         <div class="card-body">
-          <h2 class="card-title">{{ movie.title }}</h2>
-          <p class="card-text">{{ movie.description }}</p>
-          <button class="btn btn-sm btn-outline-primary">Details</button>
+          <div class="card-title">
+            {{ movie.title }}
+            <p class="card-text">
+              {{ movie.description }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

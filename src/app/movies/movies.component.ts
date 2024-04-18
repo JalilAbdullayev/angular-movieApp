@@ -10,10 +10,12 @@ import {MovieRepository} from "../models/movie.repository";
 export class MoviesComponent {
   title = 'Movies List';
   movies: Movie[];
+  popularMovies: Movie[];
   movieRepository: MovieRepository;
 
   constructor() {
     this.movieRepository = new MovieRepository();
     this.movies = this.movieRepository.getMovies();
+    this.popularMovies = this.movieRepository.getPopularMovies();
   }
 }
