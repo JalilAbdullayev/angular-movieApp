@@ -26,4 +26,16 @@ export class MoviesComponent {
       this.movies.filter(m => m.title.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
         m.description.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1) : this.movies;
   }
+
+  addToList($event: any, movie: Movie) {
+    if ($event.target.classList.contains('btn-primary')) {
+      $event.target.innerText = 'Remove from List';
+      $event.target.classList.remove('btn-primary');
+      $event.target.classList.add('btn-danger');
+    } else {
+      $event.target.innerText = 'Add to List';
+      $event.target.classList.remove('btn-danger');
+      $event.target.classList.add('btn-primary');
+    }
+  }
 }

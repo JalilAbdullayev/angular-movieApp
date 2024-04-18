@@ -11,9 +11,22 @@ export class CategoryComponent {
 // categories = ['Adventure', 'Romance', 'Sci-Fi', 'Drama'];
   categories: Category[];
   categoryRepository: CategoryRepository;
+  selectedCategory: Category = null;
 
   constructor() {
     this.categoryRepository = new CategoryRepository();
     this.categories = this.categoryRepository.getCategories();
+  }
+
+  displayAll: boolean = true;
+
+  selectCategory(category?: Category) {
+    if (category) {
+      this.selectedCategory = category;
+      this.displayAll = false;
+    } else {
+      this.selectedCategory = null;
+      this.displayAll = true;
+    }
   }
 }
