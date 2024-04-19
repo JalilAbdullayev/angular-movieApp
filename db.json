@@ -23,6 +23,12 @@
       "title": "Movie 4",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "rogue-one.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Movie 5",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
+      "imageUrl": "interstellar.jpg"
     }
   ],
   "categories": [

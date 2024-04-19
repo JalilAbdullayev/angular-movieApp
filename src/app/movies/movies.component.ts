@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Movie} from "../models/movie";
-import {MovieRepository} from "../models/movie.repository";
 import {AlertifyService} from "../services/alertify.service";
-import {HttpClient} from "@angular/common/http";
+import {MovieService} from "../services/movie.service";
 
 @Component({
   selector: 'movies',
   templateUrl: './movies.component.html',
-  styleUrl: './movies.component.css'
+  styleUrl: './movies.component.css',
+  providers: [MovieService]
 })
 export class MoviesComponent implements OnInit {
   title = 'Movies List';
@@ -16,18 +16,14 @@ export class MoviesComponent implements OnInit {
 
   filterText: string = '';
 
-  constructor(private alertify: AlertifyService, private http: HttpClient) {
-    this.filteredMovies = this.movies;
+  constructor(private alertify: AlertifyService, private movieService: MovieService) {
   }
 
   ngOnInit(): void {
-    this.http.get<Movie[]>('http://localhost:3000/movies').subscribe(data => {
+    this.movieService.getMovies().subscribe(data => {
       this.movies = data;
       this.filteredMovies = this.movies;
     });
-    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(data => {
-      console.log(data);
-    })
   }
 
   onInputChange() {
