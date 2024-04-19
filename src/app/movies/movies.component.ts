@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {Movie} from "../models/movie";
 import {MovieRepository} from "../models/movie.repository";
 
+declare let alertify: any;
+
 @Component({
   selector: 'movies',
   templateUrl: './movies.component.html',
@@ -32,10 +34,12 @@ export class MoviesComponent {
       $event.target.innerText = 'Remove from List';
       $event.target.classList.remove('btn-primary');
       $event.target.classList.add('btn-danger');
+      alertify.success(movie.title + ' has been added to your list!');
     } else {
       $event.target.innerText = 'Add to List';
       $event.target.classList.remove('btn-danger');
       $event.target.classList.add('btn-primary');
+      alertify.error(movie.title + ' has been removed from your list!');
     }
   }
 }
