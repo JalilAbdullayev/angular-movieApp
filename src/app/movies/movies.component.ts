@@ -1,25 +1,33 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Movie} from "../models/movie";
 import {MovieRepository} from "../models/movie.repository";
 import {AlertifyService} from "../services/alertify.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'movies',
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css'
 })
-export class MoviesComponent {
+export class MoviesComponent implements OnInit {
   title = 'Movies List';
-  movies: Movie[];
-  filteredMovies: Movie[];
-  movieRepository: MovieRepository;
+  movies: Movie[] = [];
+  filteredMovies: Movie[] = [];
 
   filterText: string = '';
 
-  constructor(private alertify: AlertifyService) {
-    this.movieRepository = new MovieRepository();
-    this.movies = this.movieRepository.getMovies();
+  constructor(private alertify: AlertifyService, private http: HttpClient) {
     this.filteredMovies = this.movies;
+  }
+
+  ngOnInit(): void {
+    this.http.get<Movie[]>('http://localhost:3000/movies').subscribe(data => {
+      this.movies = data;
+      this.filteredMovies = this.movies;
+    });
+    this.http.get('https://jsonplaceholder.typicode.com/users').subscribe(data => {
+      console.log(data);
+    })
   }
 
   onInputChange() {
