@@ -15,6 +15,7 @@ export class MoviesComponent implements OnInit {
   filteredMovies: Movie[] = [];
 
   filterText: string = '';
+  error: any;
 
   constructor(private alertify: AlertifyService, private movieService: MovieService) {
   }
@@ -23,7 +24,7 @@ export class MoviesComponent implements OnInit {
     this.movieService.getMovies().subscribe(data => {
       this.movies = data;
       this.filteredMovies = this.movies;
-    });
+    }, error => this.error = error);
   }
 
   onInputChange() {
