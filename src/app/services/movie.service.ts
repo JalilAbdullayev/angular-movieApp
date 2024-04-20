@@ -20,6 +20,12 @@ export class MovieService {
         catchError(this.handleError));
   }
 
+  getMovieById(movieId: number): Observable<Movie> {
+    return this.http.get<Movie>(this.url + '/' + movieId)
+      .pipe(tap(data => console.table(data)),
+        catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

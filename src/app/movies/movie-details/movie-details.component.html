@@ -1,0 +1,22 @@
+<div *ngIf="movie; else noMovie">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="assets/image/{{ movie.imageUrl }}" class="img-fluid rounded-start" alt=""/>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1 class="card-title">
+            {{ movie.title | titlecase }}
+          </h1>
+          <p class="card-text">
+            {{ movie.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noMovie>
+  <div class="alert alert-warning">Movie not found.</div>
+</ng-template>
