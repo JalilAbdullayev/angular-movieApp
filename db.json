@@ -4,31 +4,43 @@
       "id": 1,
       "title": "Jurassic Park",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
-      "imageUrl": "jurassic-park.jpg"
+      "imageUrl": "jurassic-park.jpg",
+      "categoryId": 3
     },
     {
       "id": 2,
       "title": "Godzilla",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
-      "imageUrl": "godzilla.jpg"
+      "imageUrl": "godzilla.jpg",
+      "categoryId": 1
     },
     {
       "id": 3,
       "title": "The Hunger Games",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
-      "imageUrl": "the-hunger-games.jpg"
+      "imageUrl": "the-hunger-games.jpg",
+      "categoryId": 2
     },
     {
       "id": 4,
       "title": "Rogue One",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
-      "imageUrl": "rogue-one.jpg"
+      "imageUrl": "rogue-one.jpg",
+      "categoryId": 2
     },
     {
       "id": 5,
       "title": "Interstellar",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
-      "imageUrl": "interstellar.jpg"
+      "imageUrl": "interstellar.jpg",
+      "categoryId": 3
+    },
+    {
+      "id": 6,
+      "title": "1984",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
+      "imageUrl": "1984.jpg",
+      "categoryId": 4
     }
   ],
   "categories": [
@@ -38,7 +50,7 @@
     },
     {
       "id": 2,
-      "name": "Romance"
+      "name": "Action"
     },
     {
       "id": 3,

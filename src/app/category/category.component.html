@@ -2,11 +2,12 @@
   <div class="alert alert-danger" *ngIf="error">
     {{ error }}
   </div>
-  <a (click)="selectCategory()" [class.active]="displayAll"
+  <a (click)="selectCategory()" [class.active]="displayAll" routerLink="movies"
      class="list-group-item list-group-item-action">
     All Categories
   </a>
-  <a *ngFor="let category of categories" href="#" (click)="selectCategory(category)"
+  <a *ngFor="let category of categories" (click)="selectCategory(category)"
+     routerLink="movies/category/{{ category.id }}"
      [class.active]="!displayAll && selectedCategory.id === category.id" class="list-group-item list-group-item-action">
     {{ category.name | titlecase }}
   </a>

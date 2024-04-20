@@ -11,6 +11,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'movies',
     pathMatch: 'full'
+  },
+  {
+    path: 'movies/category/:id',
+    component: MoviesComponent
   }
 ];
 

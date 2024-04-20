@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Movie} from "../models/movie";
 import {AlertifyService} from "../services/alertify.service";
 import {MovieService} from "../services/movie.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'movies',
@@ -17,14 +18,16 @@ export class MoviesComponent implements OnInit {
   filterText: string = '';
   error: any;
 
-  constructor(private alertify: AlertifyService, private movieService: MovieService) {
+  constructor(private alertify: AlertifyService, private movieService: MovieService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe(data => {
-      this.movies = data;
-      this.filteredMovies = this.movies;
-    }, error => this.error = error);
+    this.activatedRoute.params.subscribe(params => {
+      this.movieService.getMovies(params['id']).subscribe(data => {
+        this.movies = data;
+        this.filteredMovies = this.movies;
+      }, error => this.error = error);
+    })
   }
 
   onInputChange() {
