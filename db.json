@@ -2,31 +2,31 @@
   "movies": [
     {
       "id": 1,
-      "title": "Movie 1",
+      "title": "Jurassic Park",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "jurassic-park.jpg"
     },
     {
       "id": 2,
-      "title": "Movie 2",
+      "title": "Godzilla",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "godzilla.jpg"
     },
     {
       "id": 3,
-      "title": "Movie 3",
+      "title": "The Hunger Games",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "the-hunger-games.jpg"
     },
     {
       "id": 4,
-      "title": "Movie 4",
+      "title": "Rogue One",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "rogue-one.jpg"
     },
     {
       "id": 5,
-      "title": "Movie 5",
+      "title": "Interstellar",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "interstellar.jpg"
     }
