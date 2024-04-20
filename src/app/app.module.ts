@@ -5,8 +5,7 @@ import {AppComponent} from './app.component';
 import {NavComponent} from './nav/nav.component';
 import {CategoryComponent} from './category/category.component';
 import {MoviesComponent} from './movies/movies.component';
-import {MovieComponent} from './movies/movie/movie.component';
-import {MovieDetailsComponent} from './movies/movie/movie-details/movie-details.component';
+import {MovieDetailsComponent} from './movies/movie-details/movie-details.component';
 import {FooterComponent} from './footer/footer.component';
 import {SummaryPipe} from './pipes/summary.pipe';
 import {FormsModule} from "@angular/forms";
@@ -20,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
     NavComponent,
     CategoryComponent,
     MoviesComponent,
-    MovieComponent,
     MovieDetailsComponent,
     FooterComponent,
     SummaryPipe,
