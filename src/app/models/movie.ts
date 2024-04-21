@@ -1,9 +1,9 @@
 export interface Movie {
-  id: number;
+  id: string;
   title: string;
   description: string;
   imageUrl: string;
   isPopular: boolean;
-  datePublished: Date;
+  datePublished: number;
   categoryId: number;
 }

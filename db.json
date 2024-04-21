@@ -1,63 +1,81 @@
 {
   "movies": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Jurassic Park",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "jurassic-park.jpg",
-      "categoryId": 3
+      "categoryId": "3"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Godzilla",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "godzilla.jpg",
-      "categoryId": 1
+      "categoryId": "1"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "The Hunger Games",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "the-hunger-games.jpg",
-      "categoryId": 2
+      "categoryId": "2"
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Rogue One",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "rogue-one.jpg",
-      "categoryId": 2
+      "categoryId": "2"
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Interstellar",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "interstellar.jpg",
-      "categoryId": 3
+      "categoryId": "3"
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "1984",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, quidem.",
       "imageUrl": "1984.jpg",
-      "categoryId": 4
+      "categoryId": "4"
+    },
+    {
+      "id": "7",
+      "title": "new-3",
+      "description": "new-3",
+      "imageUrl": "interstellar.jpg",
+      "isPopular": false,
+      "datePublished": 1713687048987,
+      "categoryId": "1"
+    },
+    {
+      "id": "8",
+      "title": "test",
+      "description": "test",
+      "imageUrl": "jurassic-park.jpg",
+      "isPopular": false,
+      "datePublished": 1713701985356,
+      "categoryId": "2"
     }
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Adventure"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Action"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Sci-Fi"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Drama"
     }
   ]
