@@ -23,6 +23,9 @@
       Category
     </label>
     <select #categoryId id="categoryId" class="form-select">
+      <option value="-1">
+        Select
+      </option>
       <option *ngFor="let category of categories" [value]="category.id">
         {{ category.name }}
       </option>
