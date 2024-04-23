@@ -1,11 +1,10 @@
-import {Component, model, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from "../../services/category.service";
 import {Category} from "../../models/category";
 import {MovieService} from "../../services/movie.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {AlertifyService} from "../../services/alertify.service";
-import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-movie-create',
@@ -15,7 +14,9 @@ import {NgForm} from "@angular/forms";
 })
 export class MovieCreateComponent implements OnInit {
   categories: Category[];
-  model: any = {};
+  model: any = {
+    categoryId: "-1"
+  };
 
   constructor(private categoryService: CategoryService,
               private movieService: MovieService,
@@ -30,25 +31,23 @@ export class MovieCreateComponent implements OnInit {
     })
   }
 
-  createMovie(form: NgForm) {
+  createMovie() {
     this.http.get<any[]>('http://localhost:3000/movies').subscribe(data => {
       const lastMovie = data[data.length - 1];
       const id = lastMovie ? Number(lastMovie.id) + 1 : 1;
-      console.log(this.model);
-      console.log(form)
-      /*const movie = {
+      const movie = {
         id: id.toString(),
-        title: title.value,
-        description: description.value,
-        imageUrl: imageUrl.value,
+        title: this.model.title,
+        description: this.model.description,
+        imageUrl: this.model.imageUrl,
         isPopular: false,
         datePublished: new Date().getTime(),
-        categoryId: categoryId.value
+        categoryId: this.model.categoryId
       }
 
       this.movieService.createMovie(movie).subscribe(data => {
         this.router.navigate(['/movies', data.id]);
-      })*/
+      })
     })
   }
 

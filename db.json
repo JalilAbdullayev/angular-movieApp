@@ -44,39 +44,12 @@
     },
     {
       "id": "7",
-      "title": "new-3",
-      "description": "new-3",
-      "imageUrl": "interstellar.jpg",
+      "title": "Title",
+      "description": "Description",
+      "imageUrl": "godzilla.jpg",
       "isPopular": false,
-      "datePublished": 1713687048987,
-      "categoryId": "1"
-    },
-    {
-      "id": "8",
-      "title": "test",
-      "description": "test",
-      "imageUrl": "jurassic-park.jpg",
-      "isPopular": false,
-      "datePublished": 1713701985356,
+      "datePublished": 1713840844573,
       "categoryId": "2"
-    },
-    {
-      "id": "9",
-      "title": "awfm",
-      "description": "elgmm",
-      "imageUrl": "godzilla.jpg",
-      "isPopular": false,
-      "datePublished": 1713702633308,
-      "categoryId": "4"
-    },
-    {
-      "id": "10",
-      "title": "egae",
-      "description": "eggw",
-      "imageUrl": "godzilla.jpg",
-      "isPopular": false,
-      "datePublished": 1713702716617,
-      "categoryId": "Select"
     }
   ],
   "categories": [
