@@ -4,8 +4,7 @@ import {Category} from "../../models/category";
 import {MovieService} from "../../services/movie.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {AlertifyService} from "../../services/alertify.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-movie-create',
@@ -22,8 +21,7 @@ export class MovieCreateComponent implements OnInit {
   constructor(private categoryService: CategoryService,
               private movieService: MovieService,
               private router: Router,
-              private http: HttpClient,
-              private alertify: AlertifyService) {
+              private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -33,11 +31,27 @@ export class MovieCreateComponent implements OnInit {
   }
 
   movieForm = new FormGroup({
-    title: new FormControl('title'),
-    description: new FormControl('description'),
-    imageUrl: new FormControl('jurassic-park.jpg'),
-    categoryId: new FormControl('2')
+    title: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    imageUrl: new FormControl('', [Validators.required]),
+    categoryId: new FormControl('-1', [Validators.required])
   });
+
+  get title() {
+    return this.movieForm.get('title');
+  }
+
+  get description() {
+    return this.movieForm.get('description');
+  }
+
+  get imageUrl() {
+    return this.movieForm.get('imageUrl');
+  }
+
+  get categoryId() {
+    return this.movieForm.get('categoryId');
+  }
 
   clearForm() {
     this.movieForm.patchValue({
@@ -66,9 +80,5 @@ export class MovieCreateComponent implements OnInit {
         this.router.navigate(['/movies', data.id]);
       })
     })
-  }
-
-  log(value: any) {
-    console.log(value)
   }
 }
