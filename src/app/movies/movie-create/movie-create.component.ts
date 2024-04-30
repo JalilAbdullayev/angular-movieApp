@@ -5,6 +5,7 @@ import {MovieService} from "../../services/movie.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {AlertifyService} from "../../services/alertify.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-movie-create',
@@ -28,6 +29,22 @@ export class MovieCreateComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
       this.categories = data
+    })
+  }
+
+  movieForm = new FormGroup({
+    title: new FormControl('title'),
+    description: new FormControl('description'),
+    imageUrl: new FormControl('jurassic-park.jpg'),
+    categoryId: new FormControl('2')
+  });
+
+  clearForm() {
+    this.movieForm.patchValue({
+      title: '',
+      description: '',
+      imageUrl: '',
+      categoryId: '-1'
     })
   }
 

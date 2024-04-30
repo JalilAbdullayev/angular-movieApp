@@ -8,7 +8,7 @@ import {MoviesComponent} from './movies/movies.component';
 import {MovieDetailsComponent} from './movies/movie-details/movie-details.component';
 import {FooterComponent} from './footer/footer.component';
 import {SummaryPipe} from './pipes/summary.pipe';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MovieFilterPipe} from './pipes/movie-filter.pipe';
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
@@ -26,12 +26,13 @@ import { MovieCreateComponent } from './movies/movie-create/movie-create.compone
     MovieFilterPipe,
     MovieCreateComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

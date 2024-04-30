@@ -1,46 +1,28 @@
 <h1>Create Movie</h1>
-<form #form="ngForm" (ngSubmit)="createMovie()">
+<form [formGroup]="movieForm" (ngSubmit)="createMovie()">
   <div class="mb-3">
     <label for="title" class="form-label">
       Title
     </label>
-    <input required minlength="5" #title="ngModel" (change)="log(title)" type="text" [(ngModel)]="model.title"
-           class="form-control" id="title" name="title"/>
-    <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
-      <p *ngIf="title.errors?.['required']">
-        Title is required.
-      </p>
-      <p *ngIf="title.errors?.['minlength']">
-        Title must be at least 5 characters.
-      </p>
-    </div>
+    <input type="text" class="form-control" id="title" name="title" formControlName="title"/>
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">
       Description
     </label>
-    <textarea required class="form-control" [(ngModel)]="model.description" id="description"
-              name="description" #description="ngModel"></textarea>
-    <div class="alert alert-danger" *ngIf="description.invalid && description.touched">
-      Description is required
-    </div>
+    <textarea class="form-control" id="description" name="description" formControlName="description"></textarea>
   </div>
   <div class="mb-3">
     <label for="imageUrl" class="form-label">
       Image URL
     </label>
-    <input required type="text" [(ngModel)]="model.imageUrl" class="form-control" id="imageUrl" name="imageUrl"
-           #imageUrl="ngModel"/>
-    <div class="alert alert-danger" *ngIf="imageUrl.invalid && imageUrl.touched">
-      Image URL is required
-    </div>
+    <input type="text" class="form-control" id="imageUrl" name="imageUrl" formControlName="imageUrl"/>
   </div>
   <div class="mb-3">
     <label for="categoryId" class="form-label">
       Category
     </label>
-    <select required id="categoryId" class="form-select" [(ngModel)]="model.categoryId" name="categoryId"
-            #categoryId="ngModel">
+    <select id="categoryId" class="form-select" name="categoryId" formControlName="categoryId">
       <option value="-1">
         Select
       </option>
@@ -48,11 +30,11 @@
         {{ category.name }}
       </option>
     </select>
-    <div class="alert alert-danger" *ngIf="categoryId.invalid && categoryId.touched">
-      Category is required
-    </div>
   </div>
-  <button class="btn btn-primary" [disabled]="form.invalid" type="submit">
+  <button class="btn btn-primary" type="submit">
     Create
+  </button>
+  <button type="button" class="btn btn-warning" (click)="clearForm()">
+    Clear
   </button>
 </form>
