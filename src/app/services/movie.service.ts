@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, throwError} from "rxjs";
+import {catchError, map, Observable, tap, throwError} from "rxjs";
 import {Movie} from "../models/movie";
 
 @Injectable()
@@ -12,11 +12,20 @@ export class MovieService {
   }
 
   getMovies(categoryId: number): Observable<Movie[]> {
-    let newUrl = this.url;
+    let newUrl = this.url_firebase + '/movies.json';
     if (categoryId) {
       newUrl += '?categoryId=' + categoryId;
     }
-    return this.http.get<Movie[]>(newUrl).pipe(catchError(this.handleError));
+    return this.http.get<Movie[]>(newUrl).pipe(
+      map(response => {
+        const movies: Movie[] = [];
+        for (const key in response) {
+          movies.push({...response[key], id: key});
+        }
+        return movies;
+      }),
+      catchError(this.handleError)
+    );
   }
 
   getMovieById(movieId: number): Observable<Movie> {

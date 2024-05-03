@@ -63,23 +63,18 @@ export class MovieCreateComponent implements OnInit {
   }
 
   createMovie() {
-    this.http.get<any[]>('http://localhost:3000/movies').subscribe(data => {
-      const lastMovie = data[data.length - 1];
-      const id = lastMovie ? Number(lastMovie.id) + 1 : 1;
-      const movie = {
-        id: id.toString(),
-        title: this.movieForm.value.title,
-        description: this.movieForm.value.description,
-        imageUrl: this.movieForm.value.imageUrl,
-        isPopular: false,
-        datePublished: new Date().getTime(),
-        categoryId: this.movieForm.value.categoryId
-      }
+    const movie = {
+      id: 0,
+      title: this.movieForm.value.title,
+      description: this.movieForm.value.description,
+      imageUrl: this.movieForm.value.imageUrl,
+      isPopular: false,
+      datePublished: new Date().getTime(),
+      categoryId: this.movieForm.value.categoryId
+    }
 
-      this.movieService.createMovie(movie).subscribe(data => {
-        console.log(data);
-        this.router.navigate(['/movies']);
-      })
+    this.movieService.createMovie(movie).subscribe(data => {
+      this.router.navigate(['/movies']);
     })
   }
 }
