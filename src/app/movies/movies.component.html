@@ -2,17 +2,19 @@
   {{ error }}
   <!--Unknown error.-->
 </div>
-<div *ngIf="movies.length > 0; else noMovies">
-  <h1>{{ title }}</h1>
-  <div class="alert alert-success">{{ filteredMovies.length }} movie(s) found.</div>
-  <div class="mb-3">
-    <input type="search" class="form-control" placeholder="Search..." [(ngModel)]="filterText"
-           (ngModelChange)="onInputChange()"/>
-    <small class="text-muted" *ngIf="filterText">
-      You searched for: {{ filterText }}
-    </small>
+<div *ngIf="!loading">
+  <div *ngIf="movies.length > 0; else noMovies">
+    <h1>{{ title }}</h1>
+    <div class="alert alert-success">{{ filteredMovies.length }} movie(s) found.</div>
+    <div class="mb-3">
+      <input type="search" class="form-control" placeholder="Search..." [(ngModel)]="filterText"
+             (ngModelChange)="onInputChange()"/>
+      <small class="text-muted" *ngIf="filterText">
+        You searched for: {{ filterText }}
+      </small>
+    </div>
+    <ng-template [ngTemplateOutlet]="movieList"></ng-template>
   </div>
-  <ng-template [ngTemplateOutlet]="movieList"></ng-template>
 </div>
 <ng-template #noMovies>
   <div class="alert alert-warning">Movies not found.</div>
@@ -37,3 +39,8 @@
     </div>
   </div>
 </ng-template>
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

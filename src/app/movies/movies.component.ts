@@ -21,12 +21,20 @@ export class MoviesComponent implements OnInit {
   constructor(private alertify: AlertifyService, private movieService: MovieService, private activatedRoute: ActivatedRoute) {
   }
 
+  loading: boolean = false;
+
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
+      this.loading = true;
       this.movieService.getMovies(params['id']).subscribe(data => {
         this.movies = data;
         this.filteredMovies = this.movies;
-      }, error => this.error = error);
+        this.loading = false;
+      }, error => {
+        this.error = error,
+          this.loading = false
+      });
     })
   }
 
