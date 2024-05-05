@@ -73,7 +73,7 @@ export class MovieCreateComponent implements OnInit {
       categoryId: this.movieForm.value.categoryId
     }
 
-    this.movieService.createMovie(movie).subscribe(data => {
+    this.movieService.createMovie(movie).subscribe(() => {
       this.router.navigate(['/movies']);
     })
   }

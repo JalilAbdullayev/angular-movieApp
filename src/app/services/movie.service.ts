@@ -5,14 +5,13 @@ import {Movie} from "../models/movie";
 
 @Injectable()
 export class MovieService {
-  url = 'http://localhost:3000/movies';
-  url_firebase = 'https://angular-movieapp-65330-default-rtdb.firebaseio.com/;'
+  url_firebase = 'https://angular-movieapp-65330-default-rtdb.firebaseio.com/';
 
   constructor(private http: HttpClient) {
   }
 
   getMovies(categoryId: string): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.url_firebase + '/movies.json').pipe(
+    return this.http.get<Movie[]>(this.url_firebase + 'movies.json').pipe(
       map(response => {
         const movies: Movie[] = [];
         for (const key in response) {
@@ -31,7 +30,7 @@ export class MovieService {
   }
 
   getMovieById(movieId: string): Observable<Movie> {
-    return this.http.get<Movie>(this.url_firebase + '/movies/' + movieId + '.json');
+    return this.http.get<Movie>(this.url_firebase + 'movies/' + movieId + '.json');
   }
 
   createMovie(movie: Movie): Observable<Movie> {
@@ -40,7 +39,7 @@ export class MovieService {
         'Content-Type': 'application/json'
       })
     }
-    return this.http.post<Movie>(this.url_firebase + '/movies.json', movie, httpOptions)
+    return this.http.post<Movie>(this.url_firebase + 'movies.json', movie, httpOptions)
   }
 
   private handleError(error: HttpErrorResponse) {
