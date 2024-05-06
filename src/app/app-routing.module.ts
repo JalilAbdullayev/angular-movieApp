@@ -4,6 +4,7 @@ import {MoviesComponent} from "./movies/movies.component";
 import {MovieDetailsComponent} from "./movies/movie-details/movie-details.component";
 import {MovieCreateComponent} from "./movies/movie-create/movie-create.component";
 import {CategoryCreateComponent} from "./category/category-create/category-create.component";
+import {AuthComponent} from "./auth/auth.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'movies/:id',
     component: MovieDetailsComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
   }
 ];
 
