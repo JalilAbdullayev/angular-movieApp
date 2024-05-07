@@ -14,7 +14,7 @@
   <button type="submit" [disabled]="authForm.invalid" class="btn btn-primary">
     {{ isLoginMode ? 'Login' : 'Sign Up' }}
   </button>
-  <button type="submit" class="btn btn-danger ms-2" (click)="onToggleMode()">
+  <button type="button" class="btn btn-danger ms-2" (click)="onToggleMode()">
     Toggle to {{ isLoginMode ? 'Sign Up' : 'Login' }}
   </button>
 </form>
