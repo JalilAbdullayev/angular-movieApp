@@ -1,4 +1,4 @@
-<form #authForm='ngForm' (ngSubmit)="onSubmit(authForm)">
+<form *ngIf="!loading" #authForm='ngForm' (ngSubmit)="onSubmit(authForm)">
   <div class="mb-3">
     <label for="email" class="form-label">
       E-mail
@@ -18,3 +18,8 @@
     Toggle to {{ isLoginMode ? 'Sign Up' : 'Login' }}
   </button>
 </form>
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
