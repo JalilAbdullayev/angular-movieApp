@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {AuthService} from "../services/auth.service";
 import {Observable} from "rxjs";
 import {AuthResponse} from "../models/authResponse";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-auth',
@@ -12,6 +13,7 @@ import {AuthResponse} from "../models/authResponse";
 export class AuthComponent {
   isLoginMode: boolean = true;
   loading: boolean = false;
+  error: string;
 
   constructor(private authService: AuthService) {
   }
@@ -39,13 +41,12 @@ export class AuthComponent {
     }
 
     authResponse.subscribe(response => {
-        console.log(response);
-        this.loading = false;
-      },
-      error => {
-        console.log(error);
-        this.loading = false;
-      });
+      console.log(response);
+      this.loading = false;
+    }, err => {
+      this.error = err;
+      this.loading = false;
+    });
 
     form.reset();
   }
