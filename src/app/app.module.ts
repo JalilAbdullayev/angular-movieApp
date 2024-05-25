@@ -10,11 +10,13 @@ import {FooterComponent} from './footer/footer.component';
 import {SummaryPipe} from './pipes/summary.pipe';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MovieFilterPipe} from './pipes/movie-filter.pipe';
-import {HttpClientModule} from "@angular/common/http";
-import { AppRoutingModule } from './app-routing.module';
-import { MovieCreateComponent } from './movies/movie-create/movie-create.component';
-import { CategoryCreateComponent } from './category/category-create/category-create.component';
-import { AuthComponent } from './auth/auth.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AppRoutingModule} from './app-routing.module';
+import {MovieCreateComponent} from './movies/movie-create/movie-create.component';
+import {CategoryCreateComponent} from './category/category-create/category-create.component';
+import {AuthComponent} from './auth/auth.component';
+import {AlertifyService} from "./services/alertify.service";
+import {ErrorInterceptor} from "./services/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -30,14 +32,21 @@ import { AuthComponent } from './auth/auth.component';
     CategoryCreateComponent,
     AuthComponent
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        AppRoutingModule,
-        ReactiveFormsModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    AlertifyService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
