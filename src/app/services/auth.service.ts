@@ -37,6 +37,15 @@ export class AuthService {
       email: email,
       password: password,
       returnSecureToken: true
-    });
+    }).pipe(tap(response => {
+      const expirationDate = new Date(new Date().getTime() + (+response.expiresIn) * 1000);
+      const user = new User(
+        response.email,
+        response.localId,
+        response.idToken,
+        expirationDate
+      )
+      this.user.next(user);
+    }));
   }
 }

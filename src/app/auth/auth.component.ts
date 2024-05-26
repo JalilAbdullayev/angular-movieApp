@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth.service";
 import {Observable} from "rxjs";
 import {AuthResponse} from "../models/authResponse";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -15,7 +16,7 @@ export class AuthComponent {
   loading: boolean = false;
   error: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   onToggleMode() {
@@ -41,8 +42,8 @@ export class AuthComponent {
     }
 
     authResponse.subscribe(response => {
-      console.log(response);
       this.loading = false;
+      this.router.navigate(['/movies']);
     }, err => {
       this.error = err;
       this.loading = false;
