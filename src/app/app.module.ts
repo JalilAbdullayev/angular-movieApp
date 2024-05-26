@@ -17,6 +17,7 @@ import {CategoryCreateComponent} from './category/category-create/category-creat
 import {AuthComponent} from './auth/auth.component';
 import {AlertifyService} from "./services/alertify.service";
 import {ErrorInterceptor} from "./services/error.interceptor";
+import {AuthInterceptor} from "./services/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,11 @@ import {ErrorInterceptor} from "./services/error.interceptor";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],
