@@ -8,7 +8,7 @@ import {MovieDetailsComponent} from "./movie-details/movie-details.component";
 
 const routes: Routes = [
   {
-    path: 'movies',
+    path: '',
     component: MoviesHomeComponent,
     canActivate: [AuthGuard],
     children: [
