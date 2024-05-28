@@ -55,6 +55,14 @@ export class MovieService {
     )
   }
 
+  removeFromList(item: MyList): Observable<MyList> {
+    return this.http.delete<MyList>(this.url_firebase + 'users/' + item.userId + '/list/' + item.movieId + '.json').pipe(
+      tap(data => {
+        catchError(this.handleError)
+      })
+    )
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
