@@ -3,8 +3,12 @@
 </div>
 <div *ngIf="!loading">
   <div *ngIf="movies.length > 0; else noMovies">
-    <h1>{{ title }}</h1>
-    <div class="alert alert-success">{{ filteredMovies.length }} movie(s) found.</div>
+    <h1>
+      {{ title }}
+    </h1>
+    <div class="alert alert-success">
+      {{ filteredMovies.length }} movie(s) found.
+    </div>
     <div class="mb-3">
       <input type="search" class="form-control" placeholder="Search..." [(ngModel)]="filterText"
              (ngModelChange)="onInputChange()"/>
@@ -16,7 +20,9 @@
   </div>
 </div>
 <ng-template #noMovies>
-  <div class="alert alert-warning">Movies not found.</div>
+  <div class="alert alert-warning">
+    Movies not found.
+  </div>
 </ng-template>
 <ng-template #movieList>
   <div class="card mb-3" *ngFor="let movie of filteredMovies">
@@ -26,11 +32,23 @@
       </div>
       <div class="col-md-9">
         <div class="card-body">
-          <h2 class="card-title">{{ movie.title | titlecase }}</h2>
-          <p class="card-text">{{ movie.description | summary: 30 }}</p>
+          <h2 class="card-title">
+            {{ movie.title | titlecase }}
+          </h2>
+          <p class="card-text">
+            {{ movie.description | summary: 30 }}
+          </p>
           <div>
-            <a routerLink="/movies/{{ movie.id }}" class="btn btn-sm btn-outline-primary">Details</a>
-            <button class="btn btn-sm btn-primary ms-1" (click)="addToList($event, movie)">Add to List</button>
+            <a routerLink="/movies/{{ movie.id }}" class="btn btn-sm btn-outline-primary">
+              Details
+            </a>
+            <button *ngIf="!getButtonState(movie)" class="btn btn-sm btn-primary ms-1" (click)="addToList($event,
+            movie)">
+              Add to List
+            </button>
+            <button *ngIf="getButtonState(movie)" class="btn btn-sm btn-danger ms-1" (click)="addToList($event, movie)">
+              Remove from List
+            </button>
           </div>
         </div>
       </div>
@@ -39,6 +57,8 @@
 </ng-template>
 <div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
   <div class="spinner-grow text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
+    <span class="visually-hidden">
+      Loading...
+    </span>
   </div>
 </div>

@@ -16,7 +16,7 @@ export class MoviesComponent implements OnInit {
   movies: Movie[] = [];
   filteredMovies: Movie[] = [];
   userId: string;
-
+  movieList: string[] = [];
 
   filterText: string = '';
   error: any;
@@ -30,17 +30,18 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
       this.userId = user.id
-    })
-    this.activatedRoute.params.subscribe(params => {
-      this.loading = true;
-      this.movieService.getMovies(params['id']).subscribe(data => {
-        this.movies = data;
-        this.filteredMovies = this.movies;
-        this.loading = false;
-      }, error => {
-        this.error = error,
+      this.activatedRoute.params.subscribe(params => {
+        this.loading = true;
+        this.movieService.getMovies(params['id']).subscribe(data => {
+          this.movies = data;
+          this.filteredMovies = this.movies;
+          this.movieService.getList(this.userId).subscribe(movies => this.movieList = movies);
+          this.loading = false;
+        }, error => {
+          this.error = error
           this.loading = false
-      });
+        });
+      })
     })
   }
 
@@ -48,6 +49,10 @@ export class MoviesComponent implements OnInit {
     this.filteredMovies = this.filterText ?
       this.movies.filter(m => m.title.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1 ||
         m.description.toLowerCase().indexOf(this.filterText.toLowerCase()) !== -1) : this.movies;
+  }
+
+  getButtonState(movie: Movie) {
+    return this.movieList.findIndex(m => m === movie.id) > -1;
   }
 
   addToList($event: any, movie: Movie) {
