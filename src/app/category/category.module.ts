@@ -1,10 +1,9 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {CategoryComponent} from "./category.component";
 import {CategoryCreateComponent} from "./category-create/category-create.component";
-import {FormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {AuthGuard} from "../auth/auth.guard";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -13,13 +12,12 @@ import {AuthGuard} from "../auth/auth.guard";
     CategoryCreateComponent,
   ],
   imports: [
-    CommonModule,
-    FormsModule,
     RouterModule.forChild([{
       path: 'categories/create',
       component: CategoryCreateComponent,
       canActivate: [AuthGuard]
-    }])
+    }]),
+    SharedModule
   ],
   exports: [
     CategoryComponent ,
