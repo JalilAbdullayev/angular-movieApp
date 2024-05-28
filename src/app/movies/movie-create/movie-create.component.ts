@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryService} from "../../services/category.service";
 import {Category} from "../../models/category";
-import {MovieService} from "../../services/movie.service";
+import {MovieService} from "../movie.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup, Validators} from "@angular/forms";

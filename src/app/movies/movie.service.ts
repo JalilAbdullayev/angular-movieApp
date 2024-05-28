@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, map, Observable, tap, throwError} from "rxjs";
-import {Movie} from "../models/movie";
-import {MyList} from "../models/my-list";
+import {Movie} from "./movie";
+import {MyList} from "./my-list";
 
 @Injectable()
 export class MovieService {
