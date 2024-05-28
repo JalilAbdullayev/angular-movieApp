@@ -1,28 +1,32 @@
-<div *ngIf="error" class="alert alert-danger">
-  {{ error }}
-</div>
-<form *ngIf="!loading" #authForm='ngForm' (ngSubmit)="onSubmit(authForm)">
-  <div class="mb-3">
-    <label for="email" class="form-label">
-      E-mail
-    </label>
-    <input type="email" required email ngModel id="email" name="email" class="form-control"/>
-  </div>
-  <div class="mb-3">
-    <label for="email" class="form-label">
-      Password
-    </label>
-    <input type="password" required minlength="6" ngModel id="password" name="password" class="form-control"/>
-  </div>
-  <button type="submit" [disabled]="authForm.invalid" class="btn btn-primary">
-    {{ isLoginMode ? 'Login' : 'Sign Up' }}
-  </button>
-  <button type="button" class="btn btn-danger ms-2" (click)="onToggleMode()">
-    Toggle to {{ isLoginMode ? 'Sign Up' : 'Login' }}
-  </button>
-</form>
-<div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
-  <div class="spinner-grow text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div class="row">
+  <div class="col-5 mx-auto">
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+    <form *ngIf="!loading" #authForm='ngForm' (ngSubmit)="onSubmit(authForm)">
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          E-mail
+        </label>
+        <input type="email" required email ngModel id="email" name="email" class="form-control"/>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          Password
+        </label>
+        <input type="password" required minlength="6" ngModel id="password" name="password" class="form-control"/>
+      </div>
+      <button type="submit" [disabled]="authForm.invalid" class="btn btn-primary">
+        {{ isLoginMode ? 'Login' : 'Sign Up' }}
+      </button>
+      <button type="button" class="btn btn-danger ms-2" (click)="onToggleMode()">
+        Toggle to {{ isLoginMode ? 'Sign Up' : 'Login' }}
+      </button>
+    </form>
+    <div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
+      <div class="spinner-grow text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   </div>
 </div>

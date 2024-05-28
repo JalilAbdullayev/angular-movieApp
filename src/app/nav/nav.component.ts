@@ -17,4 +17,8 @@ export class NavComponent implements OnInit {
       this.isAuthenticated = !!user;
     })
   }
+
+  onLogOut() {
+    this.authService.logOut();
+  }
 }

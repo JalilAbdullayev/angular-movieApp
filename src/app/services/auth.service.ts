@@ -3,13 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {AuthResponse} from "../models/authResponse";
 import {BehaviorSubject, tap} from "rxjs";
 import {User} from "../models/user";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   api_key = 'AIzaSyDyxi7XtO9S8KZPhQTA1amhCt5UCJDxZd8';
@@ -47,5 +48,10 @@ export class AuthService {
       )
       this.user.next(user);
     }));
+  }
+
+  logOut() {
+    this.user.next(null);
+    this.router.navigate(['/auth']);
   }
 }
