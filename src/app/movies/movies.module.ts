@@ -8,6 +8,8 @@ import {MovieFilterPipe} from "./movie-filter.pipe";
 import {MoviesHomeComponent} from "./movies-home/movies-home.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MoviesRoutingModule} from './movies-routing.module';
+import {CategoryModule} from "../category/category.module";
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     RouterModule,
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MoviesRoutingModule,
+    CategoryModule
   ],
   exports: [
     MoviesComponent,

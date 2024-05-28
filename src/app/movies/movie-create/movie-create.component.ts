@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from "../../services/category.service";
-import {Category} from "../../models/category";
+import {CategoryService} from "../../category/category.service";
+import {Category} from "../../category/category";
 import {MovieService} from "../movie.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
