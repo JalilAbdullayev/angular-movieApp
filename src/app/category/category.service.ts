@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Category} from "./category";
+import {Category} from "./category.model";
 import {catchError, map, Observable, throwError} from "rxjs";
 
 @Injectable()

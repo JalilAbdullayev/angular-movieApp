@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Movie} from "./movie";
+import {Movie} from "./movie.model";
 import {AlertifyService} from "../services/alertify.service";
 import {MovieService} from "./movie.service";
 import {ActivatedRoute} from "@angular/router";
-import {AuthService} from "../services/auth.service";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'movies',
@@ -29,20 +29,22 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.user.subscribe(user => {
-      this.userId = user.id
-      this.activatedRoute.params.subscribe(params => {
-        this.loading = true;
-        this.movieService.getMovies(params['id']).subscribe(data => {
-          this.movies = data;
-          this.filteredMovies = this.movies;
-          this.movieService.getList(this.userId).subscribe(movies => this.movieList = movies);
-          this.loading = false;
-        }, error => {
-          this.error = error
-          this.loading = false
+      if (user) {
+        this.userId = user.id
+        this.activatedRoute.params.subscribe(params => {
+          this.loading = true;
+          this.movieService.getMovies(params['id']).subscribe(data => {
+            this.movies = data;
+            this.filteredMovies = this.movies;
+            this.movieService.getList(this.userId).subscribe(movies => this.movieList = movies);
+            this.loading = false;
+          }, error => {
+            this.error = error
+            this.loading = false
+          });
         });
-      })
-    })
+      }
+    });
   }
 
   onInputChange() {
