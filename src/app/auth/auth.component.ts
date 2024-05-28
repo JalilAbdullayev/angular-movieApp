@@ -23,6 +23,11 @@ export class AuthComponent {
     this.isLoginMode = !this.isLoginMode;
   }
 
+  closeDialog($event: any) {
+    console.log($event);
+    this.error = null;
+  }
+
   onSubmit(form: NgForm) {
     if (form.invalid) {
       return;

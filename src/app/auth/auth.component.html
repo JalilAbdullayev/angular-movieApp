@@ -3,7 +3,7 @@
     <!--<div class="alert alert-danger" *ngIf="error">
   {{ error }}
 </div>-->
-    <alert *ngIf="error" [message]="error"></alert>
+    <alert *ngIf="error" [message]="error" (close)="closeDialog($event)"></alert>
     <form *ngIf="!loading" #authForm='ngForm' (ngSubmit)="onSubmit(authForm)">
       <div class="mb-3">
         <label for="email" class="form-label">
