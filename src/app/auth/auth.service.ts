@@ -4,6 +4,7 @@ import {AuthResponse} from "./auth-response.model";
 import {BehaviorSubject, tap} from "rxjs";
 import {User} from "./user.model";
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,10 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  api_key = 'AIzaSyDyxi7XtO9S8KZPhQTA1amhCt5UCJDxZd8';
   user = new BehaviorSubject<User>(null);
 
   signUp(email: string, password: string) {
-    return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.api_key, {
+    return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.api_key, {
       email: email,
       password: password,
       returnSecureToken: true
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   logIn(email: string, password: string) {
-    return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + this.api_key, {
+    return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.api_key, {
       email: email,
       password: password,
       returnSecureToken: true
