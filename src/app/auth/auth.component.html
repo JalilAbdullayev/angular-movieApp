@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-5 mx-auto">
-    <div *ngIf="error" class="alert alert-danger">
-      {{ error }}
-    </div>
+    <!--<div class="alert alert-danger" *ngIf="error">
+  {{ error }}
+</div>-->
+    <alert *ngIf="error" [message]="error"></alert>
     <form *ngIf="!loading" #authForm='ngForm' (ngSubmit)="onSubmit(authForm)">
       <div class="mb-3">
         <label for="email" class="form-label">

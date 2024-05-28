@@ -19,6 +19,8 @@ import {AlertifyService} from "./services/alertify.service";
 import {ErrorInterceptor} from "./services/error.interceptor";
 import {AuthInterceptor} from "./services/auth.interceptor";
 import { MoviesHomeComponent } from './movies/movies-home/movies-home.component';
+import { AlertComponent } from './shared/alert/alert.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { MoviesHomeComponent } from './movies/movies-home/movies-home.component'
     MovieCreateComponent,
     CategoryCreateComponent,
     AuthComponent,
-    MoviesHomeComponent
+    MoviesHomeComponent,
+    AlertComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
